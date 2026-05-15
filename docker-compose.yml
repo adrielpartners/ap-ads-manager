@@ -1,0 +1,24 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ap_ads_manager
+      POSTGRES_USER: ap_ads
+      POSTGRES_PASSWORD: ap_ads
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    env_file: .env
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads/images:/app/uploads/images
+
+volumes:
+  postgres_data:
