@@ -7,8 +7,8 @@
     "build": "nuxt build",
     "preview": "nuxt preview",
     "test": "vitest run",
-    "migrate": "tsx server/db/migrate.ts",
-    "seed:owner": "tsx server/db/seed-owner.ts"
+    "migrate": "node --env-file=.env --import tsx server/db/migrate.ts",
+    "seed:owner": "node --env-file=.env --import tsx server/db/seed-owner.ts"
   },
   "dependencies": {
     "argon2": "^0.41.1",
